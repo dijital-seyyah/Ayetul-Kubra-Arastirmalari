@@ -6,47 +6,71 @@
 > — **Bediüzzaman Said Nursi, Risale-i Nur Külliyatı, 7. Şua**
 
 [![Lisans: CC BY-SA 4.0](https://img.shields.io/badge/Lisans-CC%20BY--SA%204.0-lightgrey.svg)](LICENSE)
-[![Kategori](https://img.shields.io/badge/Alan-Kelam%20%7C%20Ontoloji%20%7C%20Kozmoloji-blue)](https://github.com/dijital-seyyah/Ayetul-Kubra-Arastirmalari)
-[![Durum](https://img.shields.io/badge/Durum-Geli%C5%9Ftirme%20A%C5%9Famas%C4%B1nda-success)](#)
+[![CI Doğrulama](https://github.com/dijital-seyyah/Ayetul-Kubra-Arastirmalari/actions/workflows/ci.yml/badge.svg)](https://github.com/dijital-seyyah/Ayetul-Kubra-Arastirmalari/actions)
+[![Kategori](https://img.shields.io/badge/Alan-Kelâm%20%7C%20Ontoloji%20%7C%20Kozmoloji-blue)](https://github.com/dijital-seyyah/Ayetul-Kubra-Arastirmalari)
+[![Duraklar](https://img.shields.io/badge/Duraklar-33%20Mertebe%20Eksiksiz-brightgreen)](#-seyyahın-33-durağı-kâinatın-tevhid-şehadeti)
 
 ---
 
 ## 📌 Proje Vizyonu ve Amacı
 
-Bu araştırma reposu (`Ayetul-Kubra-Arastirmalari`), Bediüzzaman Said Nursi'nin Kastamonu hayatı döneminde telif ettiği, İslâm düşünce ve kelâm tarihinin en kapsamlı tevhid ispatlarından biri olan **7. Şua (Âyet-ül Kübra)** risalesini çok boyutlu, analitik, felsefi ve modern bilimsel verilerle mezcederek incelemek üzere kurulmuştur.
+Bu araştırma külliyatı (`Ayetul-Kubra-Arastirmalari`), Bediüzzaman Said Nursi'nin Kastamonu hayatı döneminde telif ettiği, İslâm düşünce ve kelâm tarihinin en kapsamlı tevhid ispatlarından biri olan **7. Şua (Âyet-ül Kübra)** risalesini çok boyutlu, analitik, felsefi ve modern bilimsel verilerle (astrofizik, kuantum ontolojisi, biyoloji, enformasyon teorisi) mezcederek incelemek üzere kurulmuştur.
 
 Eser, ismini Kur'an-ı Kerim'deki (Necm, 18 & Nâziât, 20) *"Andolsun ki o, Rabbinin en büyük âyetlerinden (Âyet-ül Kübra) bir kısmını gördü"* mealindeki ilahi beyandan ve Hz. Peygamber'in (asm) Mi'rac yolculuğunda kâinatın sırlarını temaşa etmesinden mülhemdir. 
 
-Biz de bu dijital araştırma havuzunda, kâinatı satır satır okuyan o fıtrî "seyyahın" tefekkür adımlarını takip ediyor; atom altı parçacıklardan galaksi kümelerine, DNA zincirlerinden melekût âlemine kadar 33 ayrı varlık mertebesinin şahitliğini akademik ve sistematik bir düzende kayıt altına alıyoruz.
+Biz de bu dijital araştırma havuzunda, kâinatı satır satır okuyan o fıtrî "seyyahın" tefekkür adımlarını takip ediyor; atom altı parçacıklardan galaksi kümelerine, DNA zincirlerinden melekût âlemine kadar **33 ayrı varlık mertebesinin** şahitliğini hem metinsel hem de makine tarafından okunabilir (JSON) ve etkileşimli (CLI) bir yapıda kayıt altına alıyoruz.
 
 ---
 
 ## 📑 İçindekiler Tablosu
 
 1. [Proje Vizyonu ve Amacı](#-proje-vizyonu-ve-amacı)
-2. [Seyyahın 33 Durağı: Kâinatın Tevhid Şehadeti](#-seyyahın-33-durağı-kâinatın-tevhid-şehadeti)
-3. [Kavramsal Harita ve Terminoloji](#-kavramsal-harita-ve-terminoloji)
-4. [Kitabın Kalbinden Vurucu Alıntılar](#-kitabın-kalbinden-vurucu-alıntılar)
-5. [Repozitori Mimarisi ve Dosya Düzeni](#-repozitori-mimarisi-ve-dosya-düzeni)
-6. [Bölümler ve Araştırma Modülleri](#-bölümler-ve-araştırma-modülleri)
+2. [🧭 Seyyah CLI Aracı (Terminal Kılavuzu)](#-seyyah-cli-aracı-terminal-kılavuzu)
+3. [Seyyahın 33 Durağı: Kâinatın Tevhid Şehadeti](#-seyyahın-33-durağı-kâinatın-tevhid-şehadeti)
+4. [Kavramsal Harita ve Terminoloji](#-kavramsal-harita-ve-terminoloji)
+5. [Kitabın Kalbinden Vurucu Alıntılar](#-kitabın-kalbinden-vurucu-alıntılar)
+6. [Repozitori Mimarisi ve Dosya Düzeni](#-repozitori-mimarisi-ve-dosya-düzeni)
 7. [Araştırma ve Katkı Metodolojisi](#-araştırma-ve-katkı-metodolojisi)
 8. [Katkıda Bulunanlar ve Lisans](#-katkıda-bulunanlar-ve-lisans)
 
 ---
 
+## 🧭 Seyyah CLI Aracı (Terminal Kılavuzu)
+
+Proje bünyesinde geliştirilen `tools/seyyah.py` aracı ile 33 tevhid durağını terminal üzerinden interaktif olarak keşfedebilirsiniz:
+
+```bash
+# 33 mertebenin özet tablosunu listele
+python tools/seyyah.py list
+
+# Belirli bir durağın ayrıntılı analizini görüntüle (Örn: 1. veya 33. durak)
+python tools/seyyah.py show 1
+python tools/seyyah.py show 33
+
+# Anahtar kelime veya esma araması yap (Örn: kuantum, rızık, nizam)
+python tools/seyyah.py search "nizam"
+
+# Günün tefekkür durağını ve sorusunu getir
+python tools/seyyah.py gunun-tefekkuru
+
+# Kategori ve esmâ istatistiklerini grafik olarak incele
+python tools/seyyah.py stats
+```
+
+---
+
 ## 🧭 Seyyahın 33 Durağı: Kâinatın Tevhid Şehadeti
 
-Âyet-ül Kübra, kâinatı birbirinden kopuk tesadüfi parçalar olarak değil; muazzam bir dayanışma (**tesanüd**), kucaklaşma (**teânuk**), yardımlaşma (**teavün**) ve cevaplaşma (**tecavüb**) ağıyla örülmüş tek bir canlı saray veya fabrika gibi ele alır.
+Âyet-ül Kübra, kâinatı birbirinden kopuk parçalar olarak değil; muazzam bir dayanışma (**tesanüd**), kucaklaşma (**teânuk**), yardımlaşma (**teavün**) ve cevaplaşma (**tecavüb**) ağıyla örülmüş tek bir canlı saray veya fabrika gibi ele alır.
 
-Araştırma külliyatımız eserin bu sistematik hiyerarşisine göre 5 ana boyutta incelenmektedir:
-
-| Kategori | Kapsadığı Mertebeler (Duraklar) | Araştırma Odak Noktası (Tefekkür) |
+| Bölüm / Makam | Kapsadığı Mertebeler (Duraklar) | Araştırma Odak Noktası (Tefekkür) |
 | :--- | :--- | :--- |
 | **1. Kozmik ve Âfâkî Âlem** | Gökyüzü (Semavat), Atmosfer (Cevv-i Sema), Yeryüzü (Arz), Denizler ve Nehirler, Dağlar ve Sahralar | Astrofiziksel hassas ayarlar (fine-tuning), kütleçekim, atmosferik döngüler, hidrosfer ve jeolojik sükûnet. |
-| **2. Biyolojik ve Organik Âlem** | Bitkiler (Nebatat) ve Ağaçlar, Hayvanat ve Kuşlar, Hücre ve DNA | DNA kodlarındaki kader programı, rızık taksimatı ve Rezzâkıyet, ekolojik denge ve biyolojik çeşitlilikteki Vahdet mührü. |
-| **3. Şuurlu Şahitler (İnsanlık)** | Peygamberler (Enbiya), Tahkik Ehli Âlimler (Asfiya), Evliya ve Ârifler | İnsanlığın en zeki ve kâmil meyvelerinin aynı "Tevhid" hakikatinde binlerce mucize ve keşifle ittifak etmesi. |
-| **4. Gayb ve Melekût Âlemi** | Melekler (Melaike), Ruhaniyat, Akl-ı Selim, Kalb-i Selim, Fıtrî İlhamat | Fizik ötesi boyutun varlığı, vicdanın ve fıtratın "Yaratıcı" ihtiyacını hissetmesi, sezgisel ve ilhamî deliller. |
-| **5. Enbiyalar Tacı ve Vahiy** | Hz. Muhammed (asm), Kur'an-ı Mu'ciz-ül Beyan, Kâinatın Heyet-i Mecmuası | Bütün delillerin zirvesi olarak Kur'an'ın ontolojik açıklamaları, Risalet-i Ahmediye ve kâinatın bütününde parlayan "Samediyet" sikkesi. |
+| **2. Biyolojik ve Organik Âlem** | Bitkiler (Nebatat), Hayvanat ve Kuşlar, Canlılık (Zevilhayat), Hücre ve DNA | DNA kodlarındaki kader programı, rızık taksimatı, Rezzâkıyet, entropiye karşı canlılık (negentropy). |
+| **3. Şuurlu Şahitler (İnsanlık)** | İnsan Fıtratı (Ene Aynası), Peygamberler (Enbiya), Tahkik Ehli Âlimler (Asfiya), Evliya ve Ârifler | Bilinç felsefesi, vahid-i kıyasî, enbiyanın tevatür derecesindeki ittifakı ve evliyanın keşf-i şuhud tecrübesi. |
+| **4. Gayb ve Melekût Âlemi** | Melekler (Melaike), Akl-ı Selim ve Fıtrî Vicdan, Vahiy ve Sadık İlhamlar | Metafizik boyut, vicdandaki nokta-i istinad ve istimdad pusulası, gaybî haberleşme ontolojisi. |
+| **5. Risalet ve Vahiy Zirvesi** | Hz. Muhammed (asm), Kur'an-ı Mu'ciz-ül Beyan, Kâinatın Heyet-i Mecmuası | Risalet-i Ahmediye'nin bin mucizesi, Kur'an'ın ebedi i'cazı ve kâinatın bütününde parlayan "Samediyet" sikkesi. |
+| **6. İkinci Makam (14 Tevhid Hücceti)** | Uluhiyet, Rububiyet, Kayyûmiyet, Ferdiyet, Kudret, İlim, İrade, Hikmet, Rahmet, Adalet, Kudsiyet, Fettâhiyet, İkram, Tevhid-i Zâtî | Esmâ-i Hüsnâ ufkundan kâinatın tümel tahlili, şirkin mantıksal imkânsızlığı (Burhan-ı Temânu'). |
 
 ---
 
@@ -54,11 +78,14 @@ Araştırma külliyatımız eserin bu sistematik hiyerarşisine göre 5 ana boyu
 
 Eserin anahtar kavramları projenin `/03_Kavram_Sozlugu` dizininde felsefi ve lügat tahlilleriyle ele alınmıştır:
 
-* **Mânâ-yı Harfî vs. Mânâ-yı İsmî:** Varlığa kendi hesabına ve maddesi cihetiyle değil, Sanatkârını gösteren bir ayna ve mektup nazarıyla bakma metodolojisi. Modern seküler bilimin pozitivist miyopluğuna karşı epistemolojik bir devrimdir.
+* **Mânâ-yı Harfî vs. Mânâ-yı İsmî:** Varlığa maddesi cihetiyle değil, Sanatkârını gösteren bir ayna ve mektup nazarıyla bakma epistemolojisi.
 * **Vücûb-u Vücûd (Vâcib-ül Vücûd):** Varlığı zâtî olan, yokluğu muhal bulunan, hiçbir sebebe ve zamana muhtaç olmayan mutlak Vacib Teâlâ.
-* **Vahdet ve Ehadiyet:** Bütün kâinatı kuşatan mutlak birlik (Vahdet/Vâhidiyet) ile en küçük zerrede ve bir karıncanın gözünde dahi tüm esmâ-i hüsnânın cilvesinin odaklanması (Ehadiyet).
-* **Tesanüd, Teavün ve Teânuk:** Kâinattaki unsurların (güneş, hava, su, toprak) akıl ve şuurdan yoksun olmalarına rağmen, tek bir canlının yaşaması için el ele verip kucaklaşmaları sırrı.
-* **İmkân ve Hudûs Delilleri:** Bütün varlıkların var olma veya yok olma noktasında eşit iken (imkân) sonradan ve benzersiz bir tercihle varlık sahasına çıkması (hudûs) üzerinden Zât-ı Zülcelâl'i ispat etme mantığı.
+* **Vahdet ve Ehadiyet:** Bütün kâinatı kuşatan mutlak birlik (Vâhidiyet) ile en küçük zerrede tüm esmâ-i hüsnânın odaklanması (Ehadiyet).
+* **Tesanüd, Teavün ve Teânuk:** Cansız unsurların tek bir canlının yaşaması için şuurlu gibi el ele verip kucaklaşmaları sırrı.
+* **İmkân ve Hudûs Delilleri:** Mevcudatın var olma veya yok olma noktasında eşitken sonradan varlık sahasına çıkması mantığı.
+* **Teceddüd-ü Emsâl:** Kâinatın her an kuantum seviyesinde yeniden yaratılması ve tazelenmesi hakikati.
+* **Kayyûmiyet:** Varlık ağacının her salise ilahi kudretle ayakta tutulması, deizmin çürütülmesi.
+* **Burhân-ı Temânu':** Çok ilahlılığın mantıksal ve ontolojik imkânsızlığı.
 
 ---
 
@@ -70,8 +97,6 @@ Eserin anahtar kavramları projenin `/03_Kavram_Sozlugu` dizininde felsefi ve l�
 
 > *"Gözünü aç, bu kâinat kitabına bak! Gör ki; her bir harfi, kendi miktarından binler derece fazla Yaratıcısını methediyor, O'nun isimlerini okutturuyor."*
 
-> *"Demek, kâinatta var olan bütün nizamlar, bütün intizamlar, bütün mizanlar, bütün zinetler; nihayetsiz bir İlim ve Hikmet'in, nihayetsiz bir İrade ve Kudret'in tecellileridir."*
-
 ---
 
 ## 📂 Repozitori Mimarisi ve Dosya Düzeni
@@ -80,29 +105,54 @@ Eserin anahtar kavramları projenin `/03_Kavram_Sozlugu` dizininde felsefi ve l�
 📁 Ayetul-Kubra-Arastirmalari
 ├── 📄 README.md                            # Ana rehber ve vizyon belgesi
 ├── 📄 CONTRIBUTORS.md                      # Araştırmaya katkı sunan mütefekkirler
-├── 📄 LICENSE                              # Telif ve açık kaynak kullanım lisansı
-├── 📁 00_Mukaddime_Analizi/                # Giriş, epistemoloji ve şirk mantığının çöküşü
-│   ├── mukaddime_ve_metodoloji.md          # 4 kaide, seyyahın zihin dünyası ve delil metodolojisi
+├── 📄 LICENSE                              # CC BY-SA 4.0 Lisans belgesi
+├── 📄 .gitignore                           # Git izleme dışı dosyalar
+├── 📁 .github/workflows/ci.yml             # Otomatik veri ve kod test iş akışı
+├── 📁 data/
+│   └── mertebeler.json                     # 33 mertebenin makinece okunabilir veri tabanı
+├── 📁 tools/
+│   └── seyyah.py                           # İnteraktif terminal arama ve tefekkür aracı
+├── 📁 00_Mukaddime_Analizi/                # Epistemoloji ve şirk mantığının çöküşü
+│   ├── mukaddime_ve_metodoloji.md          # 4 kaide, seyyahın zihin dünyası ve delil yöntemi
 │   └── vahdaniyet_ve_sirkin_muhaliyeti.md  # Tevhidin zarureti ve tesadüfün imkânsızlığı
-├── 📁 01_Makro_Alem_Delilleri/             # Astrofizik, kozmoloji, jeoloji ve atmosfer
+├── 📁 01_Makro_Alem_Delilleri/             # Astrofizik, jeoloji ve atmosfer
 │   ├── semavat_ve_yildizlar.md             # 1. Mertebe: Gökyüzü, kütleçekim ve kozmik nizam
-│   ├── cevv-i_sema_ve_bulutlar.md          # 2. Mertebe: Atmosfer, rüzgârlar, bulutlar ve rahmet
-│   ├── arz_ve_denizler.md                  # 3. & 4. Mertebe: Dünya beşiği, hidrosfer ve denizler
-│   └── daglar_ve_sahralar.md               # 5. Mertebe: Jeolojik kazıklar ve ekolojik dengeler
+│   ├── cevv-i_sema_ve_bulutlar.md          # 2. Mertebe: Atmosfer, rüzgârlar ve rahmet
+│   ├── arz_ve_denizler.md                  # 3. & 4. Mertebe: Dünya beşiği ve denizler
+│   └── daglar_ve_sahralar.md               # 5. Mertebe: Jeolojik kazıklar (evtâd)
 ├── 📁 02_Mikro_Alem_Delilleri/             # Biyoloji, botanik, zooloji ve genetik
 │   ├── nebatat_ve_cekirdekler.md           # 6. Mertebe: Çekirdek programı ve fotosentez
 │   ├── hayvanat_ve_rizik_mizani.md         # 7. Mertebe: Zooloji, sevk-i ilahi ve şefkat
+│   ├── hayat_ve_zevilhayat.md              # 8. & 9. Mertebe: Hayat hakikati ve negentropy
 │   └── hucre_ve_dna_mizanlari.md           # Hücre biyolojisi ve enformasyon ontolojisi
+├── 📁 03_Suurlu_ve_Gaybi_Alem/             # İnsan, nübüvvet, melekût ve iç âlem
+│   ├── insan_ve_ene_aynasi.md              # 10. Mertebe: İnsan fıtratı ve cami mazhariyet
+│   ├── enbiya_ve_mucizeler.md              # 11. Mertebe: Peygamberlerin ittifakı
+│   ├── asfiya_ve_muhakkikler.md            # 12. Mertebe: Tahkik ehli dâhiler ve burhanlar
+│   ├── evliya_ve_arPath_ehli.md            # 13. Mertebe: Kalp gözü ve keşf-i şuhud
+│   ├── melaike_ve_ruhaniyat.md             # 14. Mertebe: Melekût âlemi ve kozmik zabıtlar
+│   ├── akil_kalp_ve_vicdan.md              # 15. Mertebe: İç pusula ve fıtrî vicdan
+│   └── vahiy_ve_sadik_ilhamlar.md          # 16. Mertebe: Gaybî haberleşme ve ilham
+├── 📁 04_Risalet_ve_Kuran/                 # Zirve şahitler: Peygamber ve Semavi Kitap
+│   ├── risalet-i_ahmediye.md               # 17. Mertebe: Hz. Muhammed asm'ın kâinat çapındaki şahitliği
+│   └── kuran-i_mucizul_beyan.md            # 18. & 19. Mertebe: Kur'an'ın i'cazı ve heyet-i mecmua
+├── 📁 05_Ikinci_Makam_Tevhid_Huccetleri/   # İkinci Bab: 14 Tevhid ve Esmâ Hücceti
+│   ├── ikinci_bab_ve_14_burhan.md          # 14 hüccetin mantıkî mimarisi ve esmâ tecellileri
+│   └── vahdet_ve_uluhiyet_burhanlari.md    # Uluhiyet, Rububiyet ve Kayyûmiyet şerhi
 ├── 📁 03_Kavram_Sozlugu/                   # Felsefi, kelami ve tasavvufi kavramlar
-│   ├── mana-yi_harfi.md                    # Mana-yı Harfi ve Mana-yı İsmi epistemolojisi
+│   ├── mana-yi_harfi.md                    # Mana-yı Harfi vs. Mana-yı İsmi
 │   ├── hudus_ve_imkan.md                   # Kozmolojik ve ontolojik imkân delilleri
 │   ├── vahdet_ve_ehadiyet.md               # Vâhidiyet ve Ehadiyet arasındaki farklar
-│   ├── tesanud_ve_teavun.md                # Kâinattaki dayanışma ve yardımlaşma nizamı
-│   └── vucub-u_vucud.md                    # Vâcibü'l-Vücûd kavramı ve zâtî vücud
-├── 📁 04_Muzakere_ve_Makaleler/            # Özgün araştırmalar, mütalaalar ve akademik makaleler
-│   ├── dijital-seyyah_Kozmik_Tesanud_ve_Modern_Fizik.md # 21. yy fiziği ve Âyet-ül Kübra sentezi
-│   └── sehadet_mertebeleri_sistematigi.md  # 33 mertebenin sistematik şeması ve hiyerarşisi
-└── 📁 05_Ek_Materyaller/                   # Görselleştirmeler, şemalar ve çalışma rehberleri
+│   ├── tesanud_ve_teavun.md                # Kâinattaki kozmik dayanışma nizamı
+│   ├── vucub-u_vucud.md                    # Vâcibü'l-Vücûd ve zâtî vücud
+│   ├── teceddud-u_emsal.md                 # Sürekli yaratılış ve yenilenme
+│   ├── kayyumiyet.md                       # Varlık ağacının ayakta tutulması
+│   └── burhan-i_temanu.md                  # Çok ilahlılığın mantıksal imkânsızlığı
+├── 📁 04_Muzakere_ve_Makaleler/            # Akademik araştırmalar ve özgün makaleler
+│   ├── dijital-seyyah_Kozmik_Tesanud_ve_Modern_Fizik.md   # Astrofizik ve Âyet-ül Kübra sentezi
+│   ├── dijital-seyyah_Kuantum_Ontolojisi_ve_Ayetul_Kubra.md # Kuantum fiziği ve Mânâ-yı Harfî
+│   └── sehadet_mertebeleri_sistematigi.md  # 33 mertebenin tam hiyerarşik haritası
+└── 📁 05_Ek_Materyaller/                   # Görselleştirmeler ve çalışma rehberleri
     ├── zihin_haritasi_33_mertebe.md        # 33 mertebenin akış şeması (Mermaid)
     └── ayetul_kubra_okuma_rehberi.md       # Mütalaa halkaları için 6 haftalık ders planı
 ```
