@@ -8,36 +8,50 @@
 [![Lisans: CC BY-SA 4.0](https://img.shields.io/badge/Lisans-CC%20BY--SA%204.0-lightgrey.svg)](LICENSE)
 [![CI Doğrulama](https://github.com/dijital-seyyah/Ayetul-Kubra-Arastirmalari/actions/workflows/ci.yml/badge.svg)](https://github.com/dijital-seyyah/Ayetul-Kubra-Arastirmalari/actions)
 [![Kategori](https://img.shields.io/badge/Alan-Kelâm%20%7C%20Ontoloji%20%7C%20Kozmoloji-blue)](https://github.com/dijital-seyyah/Ayetul-Kubra-Arastirmalari)
+[![Web Platformu](https://img.shields.io/badge/Web-İnteraktif%20Dashboard-6366f1)](https://dijital-seyyah.github.io/Ayetul-Kubra-Arastirmalari/)
 [![Duraklar](https://img.shields.io/badge/Duraklar-33%20Mertebe%20Eksiksiz-brightgreen)](#-seyyahın-33-durağı-kâinatın-tevhid-şehadeti)
 
 ---
 
 ## 📌 Proje Vizyonu ve Amacı
 
-Bu araştırma külliyatı (`Ayetul-Kubra-Arastirmalari`), Bediüzzaman Said Nursi'nin Kastamonu hayatı döneminde telif ettiği, İslâm düşünce ve kelâm tarihinin en kapsamlı tevhid ispatlarından biri olan **7. Şua (Âyet-ül Kübra)** risalesini çok boyutlu, analitik, felsefi ve modern bilimsel verilerle (astrofizik, kuantum ontolojisi, biyoloji, enformasyon teorisi) mezcederek incelemek üzere kurulmuştur.
+Bu araştırma külliyatı (`Ayetul-Kubra-Arastirmalari`), Bediüzzaman Said Nursi'nin Kastamonu hayatı döneminde telif ettiği, İslâm düşünce ve kelâm tarihinin en kapsamlı tevhid ispatlarından biri olan **7. Şua (Âyet-ül Kübra)** risalesini çok boyutlu, analitik, felsefi ve modern bilimsel verilerle (astrofizik, kuantum ontolojisi, moleküler biyoloji, enformasyon teorisi) mezcederek incelemek üzere kurulmuştur.
 
 Eser, ismini Kur'an-ı Kerim'deki (Necm, 18 & Nâziât, 20) *"Andolsun ki o, Rabbinin en büyük âyetlerinden (Âyet-ül Kübra) bir kısmını gördü"* mealindeki ilahi beyandan ve Hz. Peygamber'in (asm) Mi'rac yolculuğunda kâinatın sırlarını temaşa etmesinden mülhemdir. 
 
-Biz de bu dijital araştırma havuzunda, kâinatı satır satır okuyan o fıtrî "seyyahın" tefekkür adımlarını takip ediyor; atom altı parçacıklardan galaksi kümelerine, DNA zincirlerinden melekût âlemine kadar **33 ayrı varlık mertebesinin** şahitliğini hem metinsel hem de makine tarafından okunabilir (JSON) ve etkileşimli (CLI) bir yapıda kayıt altına alıyoruz.
+Biz de bu dijital araştırma havuzunda, kâinatı satır satır okuyan o fıtrî "seyyahın" tefekkür adımlarını takip ediyor; atom altı parçacıklardan galaksi kümelerine, DNA zincirlerinden melekût âlemine kadar **33 ayrı varlık mertebesinin** şahitliğini hem metinsel, hem makinece okunabilir veri tabanı (JSON), hem terminal aracı (CLI), hem de tarayıcı üzerinden çalışan **interaktif modern web platformu** (`index.html`) ile kayıt altına alıyoruz.
 
 ---
 
 ## 📑 İçindekiler Tablosu
 
 1. [Proje Vizyonu ve Amacı](#-proje-vizyonu-ve-amacı)
-2. [🧭 Seyyah CLI Aracı (Terminal Kılavuzu)](#-seyyah-cli-aracı-terminal-kılavuzu)
-3. [Seyyahın 33 Durağı: Kâinatın Tevhid Şehadeti](#-seyyahın-33-durağı-kâinatın-tevhid-şehadeti)
-4. [Kavramsal Harita ve Terminoloji](#-kavramsal-harita-ve-terminoloji)
-5. [Kitabın Kalbinden Vurucu Alıntılar](#-kitabın-kalbinden-vurucu-alıntılar)
-6. [Repozitori Mimarisi ve Dosya Düzeni](#-repozitori-mimarisi-ve-dosya-düzeni)
-7. [Araştırma ve Katkı Metodolojisi](#-araştırma-ve-katkı-metodolojisi)
-8. [Katkıda Bulunanlar ve Lisans](#-katkıda-bulunanlar-ve-lisans)
+2. [🌐 İnteraktif Web Platformu (`index.html`)](#-i̇nteraktif-web-platformu-indexhtml)
+3. [🧭 Seyyah CLI Aracı (Terminal Kılavuzu & Quiz)](#-seyyah-cli-aracı-terminal-kılavuzu--quiz)
+4. [Seyyahın 33 Durağı: Kâinatın Tevhid Şehadeti](#-seyyahın-33-durağı-kâinatın-tevhid-şehadeti)
+5. [Kavramsal Harita ve Terminoloji](#-kavramsal-harita-ve-terminoloji)
+6. [Kitabın Kalbinden Vurucu Alıntılar](#-kitabın-kalbinden-vurucu-alıntılar)
+7. [Repozitori Mimarisi ve Dosya Düzeni](#-repozitori-mimarisi-ve-dosya-düzeni)
+8. [Araştırma ve Katkı Metodolojisi](#-araştırma-ve-katkı-metodolojisi)
+9. [Katkıda Bulunanlar ve Lisans](#-katkıda-bulunanlar-ve-lisans)
 
 ---
 
-## 🧭 Seyyah CLI Aracı (Terminal Kılavuzu)
+## 🌐 İnteraktif Web Platformu (`index.html`)
 
-Proje bünyesinde geliştirilen `tools/seyyah.py` aracı ile 33 tevhid durağını terminal üzerinden interaktif olarak keşfedebilirsiniz:
+Depo kökünde yer alan [`index.html`](index.html) dosyası; sıfır bağımlılıkla çalışan, karanlık/aydınlık tema destekli, mobil ve masaüstü uyumlu eksiksiz bir web uygulamasıdır:
+
+* **Canlı Filtreleme & Arama:** 33 mertebeyi Makam (Birinci/İkinci), Kategori veya serbest metin aramasıyla anında filtreleyin.
+* **Tefekkür Kartları & Detay Modal:** Her durağın ayet referansını, temel kelâmî delilini, tecelli eden esmâlarını ve modern bilim bağını tek tıkla inceleyin.
+* **Günün Tefekkürü:** Her gün rastgele bir tefekkür durağı ve derin düşünme sorusu getiren interaktif araç.
+* **İnteraktif Tefekkür Testi (Quiz):** Tarayıcı üzerinde 5 soruluk dinamik test motoru ile bilginizi ölçün ve skorunuzu görün.
+* **GitHub Pages Uyumu:** Herhangi bir derleme (build) sürecine ihtiyaç duymadan GitHub Pages üzerinde doğrudan canlı olarak çalışır.
+
+---
+
+## 🧭 Seyyah CLI Aracı (Terminal Kılavuzu & Quiz)
+
+Proje bünyesinde geliştirilen `tools/seyyah.py` aracı ile 33 tevhid durağını terminal üzerinden keşfedebilirsiniz:
 
 ```bash
 # 33 mertebenin özet tablosunu listele
@@ -47,7 +61,7 @@ python tools/seyyah.py list
 python tools/seyyah.py show 1
 python tools/seyyah.py show 33
 
-# Anahtar kelime veya esma araması yap (Örn: kuantum, rızık, nizam)
+# Anahtar kelime veya esma araması yap (Örn: kuantum, rızık, nizam, DNA)
 python tools/seyyah.py search "nizam"
 
 # Günün tefekkür durağını ve sorusunu getir
@@ -55,6 +69,12 @@ python tools/seyyah.py gunun-tefekkuru
 
 # Kategori ve esmâ istatistiklerini grafik olarak incele
 python tools/seyyah.py stats
+
+# İnteraktif terminal quizini başlat (Örn: 5 soru)
+python tools/seyyah.py quiz -n 5
+
+# Tüm mertebeleri Markdown tablosu olarak dışa aktar
+python tools/seyyah.py export -o mertebeler_tablosu.md
 ```
 
 ---
@@ -89,29 +109,20 @@ Eserin anahtar kavramları projenin `/03_Kavram_Sozlugu` dizininde felsefi ve l�
 
 ---
 
-## 📜 Kitabın Kalbinden Vurucu Alıntılar
-
-> *"Bir harf kâtipsiz olmaz, bir iğne ustasız olmaz, sahipsiz olamaz, bir köy muhtarsız olmaz diyoruz. Nasıl oluyor ki, bu nihayetsiz derecede muntazam, ölçülü, hikmetli, sanatlı olan şu kâinat sahipsiz olsun?"*
-
-> *"İşte bu seyyah-ı âlem, lisan-ı hal ile kâinata dedi: 'Acaba benim aradığım o Sâni-i Zülcelâl, şu muhteşem mahlukatta ne suretle tecelli ediyor?' Sonra, o mütefekkir yolcu her sayfayı okudukça iman mertebelerinde terakki edip, her bir tabakayı seyrettikçe marifetullah nuru parlayıp..."*
-
-> *"Gözünü aç, bu kâinat kitabına bak! Gör ki; her bir harfi, kendi miktarından binler derece fazla Yaratıcısını methediyor, O'nun isimlerini okutturuyor."*
-
----
-
 ## 📂 Repozitori Mimarisi ve Dosya Düzeni
 
 ```text
 📁 Ayetul-Kubra-Arastirmalari
+├── 📄 index.html                           # İnteraktif modern web platformu ve dashboard
 ├── 📄 README.md                            # Ana rehber ve vizyon belgesi
 ├── 📄 CONTRIBUTORS.md                      # Araştırmaya katkı sunan mütefekkirler
 ├── 📄 LICENSE                              # CC BY-SA 4.0 Lisans belgesi
 ├── 📄 .gitignore                           # Git izleme dışı dosyalar
-├── 📁 .github/workflows/ci.yml             # Otomatik veri ve kod test iş akışı
+├── 📁 .github/workflows/ci.yml             # Otomatik veri, kod ve link doğrulama iş akışı
 ├── 📁 data/
 │   └── mertebeler.json                     # 33 mertebenin makinece okunabilir veri tabanı
 ├── 📁 tools/
-│   └── seyyah.py                           # İnteraktif terminal arama ve tefekkür aracı
+│   └── seyyah.py                           # İnteraktif terminal kılavuzu, arama ve quiz aracı
 ├── 📁 00_Mukaddime_Analizi/                # Epistemoloji ve şirk mantığının çöküşü
 │   ├── mukaddime_ve_metodoloji.md          # 4 kaide, seyyahın zihin dünyası ve delil yöntemi
 │   └── vahdaniyet_ve_sirkin_muhaliyeti.md  # Tevhidin zarureti ve tesadüfün imkânsızlığı
@@ -134,11 +145,14 @@ Eserin anahtar kavramları projenin `/03_Kavram_Sozlugu` dizininde felsefi ve l�
 │   ├── akil_kalp_ve_vicdan.md              # 15. Mertebe: İç pusula ve fıtrî vicdan
 │   └── vahiy_ve_sadik_ilhamlar.md          # 16. Mertebe: Gaybî haberleşme ve ilham
 ├── 📁 04_Risalet_ve_Kuran/                 # Zirve şahitler: Peygamber ve Semavi Kitap
-│   ├── risalet-i_ahmediye.md               # 17. Mertebe: Hz. Muhammed asm'ın kâinat çapındaki şahitliği
+│   ├── risalet-i_ahmediye.md               # 17. Mertebe: Hz. Muhammed asm'ın şahitliği
 │   └── kuran-i_mucizul_beyan.md            # 18. & 19. Mertebe: Kur'an'ın i'cazı ve heyet-i mecmua
 ├── 📁 05_Ikinci_Makam_Tevhid_Huccetleri/   # İkinci Bab: 14 Tevhid ve Esmâ Hücceti
 │   ├── ikinci_bab_ve_14_burhan.md          # 14 hüccetin mantıkî mimarisi ve esmâ tecellileri
 │   └── vahdet_ve_uluhiyet_burhanlari.md    # Uluhiyet, Rububiyet ve Kayyûmiyet şerhi
+├── 📁 06_Ayetler_ve_Huccetler/             # Metin, dilbilim ve tefsir tahlilleri
+│   ├── arapca_huccetler_ve_tercumeleri.md  # 33 durak hüccetinin orijinal Arapça metinleri ve şerhi
+│   └── kurani_referanslar_ve_tefsir_notlari.md # 33 mertebenin Kur'ânî dayanakları ve tefsir notları
 ├── 📁 03_Kavram_Sozlugu/                   # Felsefi, kelami ve tasavvufi kavramlar
 │   ├── mana-yi_harfi.md                    # Mana-yı Harfi vs. Mana-yı İsmi
 │   ├── hudus_ve_imkan.md                   # Kozmolojik ve ontolojik imkân delilleri
@@ -151,6 +165,8 @@ Eserin anahtar kavramları projenin `/03_Kavram_Sozlugu` dizininde felsefi ve l�
 ├── 📁 04_Muzakere_ve_Makaleler/            # Akademik araştırmalar ve özgün makaleler
 │   ├── dijital-seyyah_Kozmik_Tesanud_ve_Modern_Fizik.md   # Astrofizik ve Âyet-ül Kübra sentezi
 │   ├── dijital-seyyah_Kuantum_Ontolojisi_ve_Ayetul_Kubra.md # Kuantum fiziği ve Mânâ-yı Harfî
+│   ├── dijital-seyyah_Biyolojik_Tasarim_ve_Teleoloji.md   # Moleküler motorlar ve teleoloji
+│   ├── klasik_kelam_ve_ayetul_kubra_mukayesesi.md         # Mütekellimîn vs. Kur'ânî burhan
 │   └── sehadet_mertebeleri_sistematigi.md  # 33 mertebenin tam hiyerarşik haritası
 └── 📁 05_Ek_Materyaller/                   # Görselleştirmeler ve çalışma rehberleri
     ├── zihin_haritasi_33_mertebe.md        # 33 mertebenin akış şeması (Mermaid)

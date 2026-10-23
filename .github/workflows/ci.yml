@@ -18,17 +18,26 @@ jobs:
         with:
           python-version: '3.11'
 
-      - name: JSON Veri Bütünlüğü ve Mertebeleri Doğrula
+      - name: JSON Veri Bütünlüğü ve Dosya Referanslarını Doğrula
         run: |
           python -c "
           import json, os
           with open('data/mertebeler.json', 'r', encoding='utf-8') as f:
               data = json.load(f)
-          assert len(data['mertebeler']) == 33, f'Eksik mertebe var: {len(data[\"mertebeler\"])} / 33'
-          print(f'✅ Toplam {len(data[\"mertebeler\"])} mertebe eksiksiz doğrulandı.')
+          mertebeler = data['mertebeler']
+          assert len(mertebeler) == 33, f'Eksik mertebe var: {len(mertebeler)} / 33'
+          
+          # Dosya referanslarını kontrol et
+          for m in mertebeler:
+              dosya = m.get('dosya')
+              if dosya:
+                  assert os.path.exists(dosya), f'Dosya bulunamadı: {dosya} (Durak #{m[\"id\"]})'
+          
+          assert os.path.exists('index.html'), 'index.html bulunamadı!'
+          print(f'✅ Toplam {len(mertebeler)} mertebe ve tüm dosya referansları eksiksiz doğrulandı.')
           "
 
-      - name: CLI Kılavuz Aracını Test Et
+      - name: CLI Kılavuz ve Quiz Aracını Test Et
         run: |
           python tools/seyyah.py stats
           python tools/seyyah.py list
@@ -36,3 +45,5 @@ jobs:
           python tools/seyyah.py show 33
           python tools/seyyah.py search "nizam"
           python tools/seyyah.py gunun-tefekkuru
+          python tools/seyyah.py quiz --auto -n 5
+          python tools/seyyah.py export

@@ -1,0 +1,1212 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Âyet-ül Kübra Araştırmaları | 33 Tevhid Durağı ve Dijital Seyyah</title>
+  <meta name="description" content="Bediüzzaman Said Nursi'nin 7. Şua (Âyet-ül Kübra) risalesinin 33 mertebesini, modern bilim, kelâm ve felsefe ışığında inceleyen interaktif araştırma platformu.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #090d16;
+      --card-bg: rgba(18, 25, 41, 0.75);
+      --card-border: rgba(99, 102, 241, 0.2);
+      --text: #f1f5f9;
+      --text-muted: #94a3b8;
+      --accent: #6366f1;
+      --accent-glow: rgba(99, 102, 241, 0.4);
+      --gold: #f59e0b;
+      --gold-glow: rgba(245, 158, 11, 0.25);
+      --success: #10b981;
+      --radius: 14px;
+      --transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    [data-theme="light"] {
+      --bg: #f8fafc;
+      --card-bg: rgba(255, 255, 255, 0.9);
+      --card-border: rgba(203, 213, 225, 0.8);
+      --text: #0f172a;
+      --text-muted: #64748b;
+      --accent: #4f46e5;
+      --accent-glow: rgba(79, 70, 229, 0.2);
+      --gold: #d97706;
+      --gold-glow: rgba(217, 119, 6, 0.15);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      line-height: 1.6;
+      background-image: 
+        radial-gradient(circle at 15% 15%, rgba(99, 102, 241, 0.12) 0%, transparent 40%),
+        radial-gradient(circle at 85% 85%, rgba(245, 158, 11, 0.08) 0%, transparent 40%);
+      background-attachment: fixed;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    header {
+      padding: 3rem 1.5rem 2rem;
+      text-align: center;
+      max-width: 1100px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    .top-bar {
+      display: flex;
+      justify-content: flex-end;
+      gap: 0.75rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .theme-toggle, .btn-action {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      color: var(--text);
+      padding: 0.5rem 1rem;
+      border-radius: 9999px;
+      cursor: pointer;
+      font-size: 0.875rem;
+      font-weight: 500;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: var(--transition);
+      backdrop-filter: blur(8px);
+    }
+
+    .theme-toggle:hover, .btn-action:hover {
+      border-color: var(--accent);
+      box-shadow: 0 0 15px var(--accent-glow);
+      transform: translateY(-1px);
+    }
+
+    h1 {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(2rem, 5vw, 3.25rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      background: linear-gradient(135deg, #fff 30%, #a5b4fc 70%, #fcd34d 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 0.75rem;
+    }
+
+    [data-theme="light"] h1 {
+      background: linear-gradient(135deg, #1e1b4b 30%, #4338ca 70%, #b45309 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .subtitle {
+      font-size: clamp(1rem, 2vw, 1.25rem);
+      color: var(--text-muted);
+      max-width: 750px;
+      margin: 0 auto 1.5rem;
+      font-style: italic;
+    }
+
+    .stats-row {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      margin-bottom: 2rem;
+    }
+
+    .stat-pill {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      padding: 0.5rem 1.25rem;
+      border-radius: 9999px;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      backdrop-filter: blur(8px);
+    }
+
+    .stat-pill strong {
+      color: var(--gold);
+      font-weight: 700;
+    }
+
+    .container {
+      max-width: 1250px;
+      margin: 0 auto;
+      padding: 0 1.5rem 4rem;
+    }
+
+    .controls-wrapper {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      margin-bottom: 2.5rem;
+      backdrop-filter: blur(12px);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+    }
+
+    .search-box {
+      width: 100%;
+      position: relative;
+      margin-bottom: 1.25rem;
+    }
+
+    .search-box input {
+      width: 100%;
+      padding: 0.9rem 1.25rem 0.9rem 3rem;
+      border-radius: 10px;
+      border: 1px solid var(--card-border);
+      background: rgba(10, 14, 25, 0.6);
+      color: var(--text);
+      font-size: 1rem;
+      outline: none;
+      transition: var(--transition);
+    }
+
+    [data-theme="light"] .search-box input {
+      background: #ffffff;
+    }
+
+    .search-box input:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 15px var(--accent-glow);
+    }
+
+    .search-box svg {
+      position: absolute;
+      left: 1rem;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 20px;
+      height: 20px;
+      fill: var(--text-muted);
+    }
+
+    .filter-tabs {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      margin-bottom: 1rem;
+    }
+
+    .filter-btn {
+      background: transparent;
+      border: 1px solid var(--card-border);
+      color: var(--text-muted);
+      padding: 0.45rem 0.9rem;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 0.85rem;
+      font-weight: 500;
+      transition: var(--transition);
+    }
+
+    .filter-btn:hover {
+      color: var(--text);
+      border-color: var(--accent);
+    }
+
+    .filter-btn.active {
+      background: var(--accent);
+      color: #fff;
+      border-color: var(--accent);
+      box-shadow: 0 0 12px var(--accent-glow);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: var(--transition);
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+      backdrop-filter: blur(10px);
+    }
+
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 4px;
+      height: 100%;
+      background: var(--accent);
+      opacity: 0;
+      transition: var(--transition);
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      border-color: var(--accent);
+      box-shadow: 0 12px 30px rgba(0,0,0,0.3), 0 0 15px var(--accent-glow);
+    }
+
+    .card:hover::before {
+      opacity: 1;
+    }
+
+    .card-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.75rem;
+    }
+
+    .card-id {
+      font-family: 'Cinzel', serif;
+      font-weight: 700;
+      color: var(--gold);
+      font-size: 0.9rem;
+      letter-spacing: 0.05em;
+    }
+
+    .card-cat {
+      font-size: 0.75rem;
+      padding: 0.2rem 0.6rem;
+      border-radius: 9999px;
+      background: rgba(99, 102, 241, 0.15);
+      color: #a5b4fc;
+      border: 1px solid rgba(99, 102, 241, 0.3);
+    }
+
+    .card-title {
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      color: var(--text);
+    }
+
+    .card-proof {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    .card-bottom {
+      border-top: 1px solid var(--card-border);
+      padding-top: 0.85rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .badge-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+    }
+
+    .esma-tag {
+      font-size: 0.75rem;
+      background: rgba(245, 158, 11, 0.1);
+      color: var(--gold);
+      border: 1px solid rgba(245, 158, 11, 0.3);
+      padding: 0.15rem 0.5rem;
+      border-radius: 6px;
+    }
+
+    .science-tag {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      font-style: italic;
+    }
+
+    /* Modal */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.75);
+      backdrop-filter: blur(8px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+      z-index: 1000;
+      opacity: 0;
+      transition: opacity 0.25s ease;
+    }
+
+    .modal-overlay.active {
+      display: flex;
+      opacity: 1;
+    }
+
+    .modal {
+      background: var(--bg);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius);
+      width: 100%;
+      max-width: 680px;
+      max-height: 90vh;
+      overflow-y: auto;
+      padding: 2rem;
+      position: relative;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 1.25rem;
+      right: 1.25rem;
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      font-size: 1.5rem;
+      cursor: pointer;
+      line-height: 1;
+    }
+
+    .modal-close:hover { color: var(--text); }
+
+    .modal-title {
+      font-size: 1.6rem;
+      margin-bottom: 0.5rem;
+      color: var(--text);
+    }
+
+    .modal-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .modal-section {
+      margin-bottom: 1.25rem;
+      padding-bottom: 1.25rem;
+      border-bottom: 1px solid var(--card-border);
+    }
+
+    .modal-section h4 {
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--gold);
+      margin-bottom: 0.4rem;
+    }
+
+    /* Quiz Modal */
+    .quiz-options {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      margin: 1.5rem 0;
+    }
+
+    .quiz-option {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      padding: 1rem;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: var(--transition);
+      text-align: left;
+      color: var(--text);
+      font-size: 0.95rem;
+    }
+
+    .quiz-option:hover {
+      border-color: var(--accent);
+      background: rgba(99, 102, 241, 0.15);
+    }
+
+    .quiz-option.correct {
+      border-color: var(--success);
+      background: rgba(16, 185, 129, 0.2);
+    }
+
+    .quiz-option.wrong {
+      border-color: #ef4444;
+      background: rgba(239, 68, 68, 0.2);
+    }
+
+    footer {
+      text-align: center;
+      padding: 3rem 1.5rem;
+      border-top: 1px solid var(--card-border);
+      color: var(--text-muted);
+      font-size: 0.875rem;
+    }
+
+    footer a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    @media (max-width: 640px) {
+      .grid { grid-template-columns: 1fr; }
+      header { padding: 2rem 1rem 1.5rem; }
+      .modal { padding: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="top-bar">
+      <button class="btn-action" onclick="openRandomContemplation()">🌟 Günün Tefekkürü</button>
+      <button class="btn-action" onclick="startQuiz()">🎯 Tefekkür Testi</button>
+      <button class="theme-toggle" id="themeBtn" onclick="toggleTheme()">🌓 Tema</button>
+      <a href="https://github.com/dijital-seyyah/Ayetul-Kubra-Arastirmalari" target="_blank" class="btn-action">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+        GitHub
+      </a>
+    </div>
+
+    <h1>ÂYET-ÜL KÜBRA ARAŞTIRMALARI</h1>
+    <p class="subtitle">"Kâinattan Hâlıkını soran bir seyyahın müşahedatıdır."</p>
+
+    <div class="stats-row">
+      <div class="stat-pill">Durak: <strong>33 Mertebe</strong></div>
+      <div class="stat-pill">Esmâ: <strong>79 Tecelli</strong></div>
+      <div class="stat-pill">Makam: <strong>2 Ana Bölüm</strong></div>
+      <div class="stat-pill">Alan: <strong>Kelâm & Modern Bilim</strong></div>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="controls-wrapper">
+      <div class="search-box">
+        <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+        <input type="text" id="searchInput" placeholder="Durak adı, ayet, kelâmî delil veya bilimsel terim arayın... (Örn: kütleçekim, DNA, nizam)">
+      </div>
+
+      <div class="filter-tabs" id="makamFilters">
+        <button class="filter-btn active" data-filter="all">Tüm Makamlar (33)</button>
+        <button class="filter-btn" data-filter="Birinci Makam">Birinci Makam (19 Durak)</button>
+        <button class="filter-btn" data-filter="İkinci Makam">İkinci Makam (14 Hüccet)</button>
+      </div>
+
+      <div class="filter-tabs" id="catFilters">
+        <button class="filter-btn active" data-cat="all">Tüm Kategoriler</button>
+        <button class="filter-btn" data-cat="Kozmik ve Âfâkî Âlem">Kozmik Âlem</button>
+        <button class="filter-btn" data-cat="Biyolojik ve Organik Âlem">Biyolojik Âlem</button>
+        <button class="filter-btn" data-cat="Şuurlu Şahitler">Şuurlu Şahitler</button>
+        <button class="filter-btn" data-cat="Gayb ve Melekût Âlemi">Gayb & Melekût</button>
+        <button class="filter-btn" data-cat="Risalet ve Vahiy Zirvesi">Risalet & Vahiy</button>
+        <button class="filter-btn" data-cat="İkinci Makam - Tevhid Hüccetleri">Esmâî Hüccetler</button>
+      </div>
+    </div>
+
+    <div class="grid" id="mertebeGrid"></div>
+  </main>
+
+  <!-- Detail Modal -->
+  <div class="modal-overlay" id="detailModal">
+    <div class="modal">
+      <button class="modal-close" onclick="closeModal('detailModal')">&times;</button>
+      <div id="modalContent"></div>
+    </div>
+  </div>
+
+  <!-- Quiz Modal -->
+  <div class="modal-overlay" id="quizModal">
+    <div class="modal">
+      <button class="modal-close" onclick="closeModal('quizModal')">&times;</button>
+      <h3 class="modal-title">🎯 Âyet-ül Kübra Tefekkür Testi</h3>
+      <p style="color:var(--text-muted); margin-bottom:1rem;" id="quizProgress">Soru 1 / 5</p>
+      <div id="quizQuestion" style="font-size:1.05rem; font-weight:500; margin-bottom:1.25rem;"></div>
+      <div class="quiz-options" id="quizOptions"></div>
+      <div id="quizFeedback" style="display:none; margin-top:1rem; padding:1rem; border-radius:8px;"></div>
+      <button class="btn-action" id="nextQuizBtn" style="display:none; margin-top:1rem; width:100%; justify-content:center;" onclick="nextQuestion()">Sonraki Soru &rarr;</button>
+    </div>
+  </div>
+
+  <footer>
+    <p>© 2026 Âyet-ül Kübra Araştırmaları • Hazırlayan: <a href="https://github.com/dijital-seyyah" target="_blank">@dijital-seyyah</a></p>
+    <p style="margin-top:0.5rem; font-size:0.8rem;">Bu araştırma platformu açık kaynaklıdır ve CC BY-SA 4.0 lisansı altındadır.</p>
+  </footer>
+
+  <!-- Gömülü Veri Kümesi -->
+  <script id="mertebelerData" type="application/json">
+{
+  "proje": "Âyet-ül Kübra Araştırmaları",
+  "toplam_mertebe_sayisi": 33,
+  "mertebeler": [
+    {
+      "id": 1,
+      "makam": "Birinci Makam",
+      "mertebe_no": 1,
+      "baslik": "Semavat ve Yıldızlar",
+      "kategori": "Kozmik ve Âfâkî Âlem",
+      "temel_delil": "Kütleçekim nizamı, direksiz durdurulan sema ve hassas kozmolojik denge.",
+      "ayet_referansi": "Mülk Sûresi, 3-5",
+      "modern_bilim": "Genel Görelilik, Kütleçekim Kanunu, Kozmik Hassas Ayarlar (Fine-Tuning)",
+      "esma": ["Celîl", "Hakîm", "Azîm", "Mün'im"],
+      "dosya": "01_Makro_Alem_Delilleri/semavat_ve_yildizlar.md"
+    },
+    {
+      "id": 2,
+      "makam": "Birinci Makam",
+      "mertebe_no": 2,
+      "baslik": "Cevv-i Sema ve Atmosfer",
+      "kategori": "Kozmik ve Âfâkî Âlem",
+      "temel_delil": "Sünger bulutlar, rüzgârların aşılayıcı vazifesi ve yağmurun rahmet olarak inmesi.",
+      "ayet_referansi": "Bakara Sûresi, 164; Hicr Sûresi, 22",
+      "modern_bilim": "Meteoroloji, Hidrolojik Döngü, Ozon Tabakası ve Atmosferik Basınç",
+      "esma": ["Rahmân", "Rahîm", "Kerîm", "Muhyî"],
+      "dosya": "01_Makro_Alem_Delilleri/cevv-i_sema_ve_bulutlar.md"
+    },
+    {
+      "id": 3,
+      "makam": "Birinci Makam",
+      "mertebe_no": 3,
+      "baslik": "Küre-i Arz (Yeryüzü)",
+      "kategori": "Kozmik ve Âfâkî Âlem",
+      "temel_delil": "Dünya uzay gemisinin sarsılmadan dönmesi, mevsimler ve haşir numuneleri.",
+      "ayet_referansi": "Mülk Sûresi, 15; Nâziât Sûresi, 30",
+      "modern_bilim": "Jeodinamik, Yörünge Eksen Eğikliği (23.5°), Biyosfer Dengesi",
+      "esma": ["Basît", "Hâfız", "Müdebbir", "Fettâh"],
+      "dosya": "01_Makro_Alem_Delilleri/arz_ve_denizler.md"
+    },
+    {
+      "id": 4,
+      "makam": "Birinci Makam",
+      "mertebe_no": 4,
+      "baslik": "Denizler ve Nehirler",
+      "kategori": "Kozmik ve Âfâkî Âlem",
+      "temel_delil": "Denizlerin karaları istila etmemesi, su altı canlılığı ve tatlı nehirlerin sevkıyatı.",
+      "ayet_referansi": "Rahmân Sûresi, 19-20; Furkan Sûresi, 53",
+      "modern_bilim": "Oşinografi, Termohalin Sirkülasyonu, Deniz Biyolojisi",
+      "esma": ["Cemîl", "Rezzâk", "Ganiyy", "Kuddûs"],
+      "dosya": "01_Makro_Alem_Delilleri/arz_ve_denizler.md"
+    },
+    {
+      "id": 5,
+      "makam": "Birinci Makam",
+      "mertebe_no": 5,
+      "baslik": "Dağlar ve Sahralar",
+      "kategori": "Kozmik ve Âfâkî Âlem",
+      "temel_delil": "Dağların yer kabuğunu sabitleyen direkler (evtâd) olması, maden ve su depoları.",
+      "ayet_referansi": "Nebe Sûresi, 7; Nahl Sûresi, 15",
+      "modern_bilim": "Levha Tektoniği, İzostasi Teorisi, Jeokimya",
+      "esma": ["Metîn", "Kaviyy", "Hazîn", "Hakîm"],
+      "dosya": "01_Makro_Alem_Delilleri/daglar_ve_sahralar.md"
+    },
+    {
+      "id": 6,
+      "makam": "Birinci Makam",
+      "mertebe_no": 6,
+      "baslik": "Eşcar ve Nebatat",
+      "kategori": "Biyolojik ve Organik Âlem",
+      "temel_delil": "Aynı kara topraktan binbir lezzet ve renkte meyveler çıkması, çekirdek programı.",
+      "ayet_referansi": "En'âm Sûresi, 95; Vâkıa Sûresi, 63-65",
+      "modern_bilim": "Botanik, Fotosentez Biyokimyası, Bitki Genetiği",
+      "esma": ["Muvassı'", "Musavvir", "Fettâh", "Latîf"],
+      "dosya": "02_Mikro_Alem_Delilleri/nebatat_ve_cekirdekler.md"
+    },
+    {
+      "id": 7,
+      "makam": "Birinci Makam",
+      "mertebe_no": 7,
+      "baslik": "Hayvanat ve Tuyur",
+      "kategori": "Biyolojik ve Organik Âlem",
+      "temel_delil": "Rızık taksimatının mükemmelliği, sevk-i ilahi (fıtrî ilham) ve anne şefkati.",
+      "ayet_referansi": "Nûr Sûresi, 41; Nahl Sûresi, 68-69",
+      "modern_bilim": "Etoloji (Hayvan Davranışı), Ekolojik Besin Ağı, Göç Dinamikleri",
+      "esma": ["Rezzâk", "Rahîm", "Vedûd", "Hâdî"],
+      "dosya": "02_Mikro_Alem_Delilleri/hayvanat_ve_rizik_mizani.md"
+    },
+    {
+      "id": 8,
+      "makam": "Birinci Makam",
+      "mertebe_no": 8,
+      "baslik": "Zevilhayat ve Hayat Hakikati",
+      "kategori": "Biyolojik ve Organik Âlem",
+      "temel_delil": "Hayatın kâinatın en yüksek gayesi ve en parlak Tevhid mührü olması.",
+      "ayet_referansi": "Enbiyâ Sûresi, 30; Rûm Sûresi, 50",
+      "modern_bilim": "Biyosfer Dengesi, Canlılığın Termodinamik Tanımı (Negentropy)",
+      "esma": ["Hayy", "Muhyî", "Bâis", "Kayyûm"],
+      "dosya": "02_Mikro_Alem_Delilleri/hayat_ve_zevilhayat.md"
+    },
+    {
+      "id": 9,
+      "makam": "Birinci Makam",
+      "mertebe_no": 9,
+      "baslik": "Hücre ve DNA Enformasyonu",
+      "kategori": "Biyolojik ve Organik Âlem",
+      "temel_delil": "Mikroskobik hacimde milyarlarca harflik genetik kütüphane ve nano-makineler.",
+      "ayet_referansi": "Lokmân Sûresi, 28; Târık Sûresi, 5-7",
+      "modern_bilim": "Moleküler Biyoloji, Enformasyon Teorisi, Epigenetik",
+      "esma": ["Alîm", "Hafîz", "Mukaddir", "Bârî"],
+      "dosya": "02_Mikro_Alem_Delilleri/hucre_ve_dna_mizanlari.md"
+    },
+    {
+      "id": 10,
+      "makam": "Birinci Makam",
+      "mertebe_no": 10,
+      "baslik": "İnsan Fıtratı ve Cami Mazhariyeti",
+      "kategori": "Şuurlu Şahitler",
+      "temel_delil": "İnsanın kâinat fihristi olması, Esmâ-i Hüsnâ'yı tartacak istidat ve hissiyatı.",
+      "ayet_referansi": "Tîn Sûresi, 4; İsrâ Sûresi, 70",
+      "modern_bilim": "Antropoloji, Nörobiyoloji, Bilinç Felsefesi",
+      "esma": ["Ahsenü'l-Hâlikîn", "Kerîm", "Câmi'", "Mütekellim"],
+      "dosya": "03_Suurlu_ve_Gaybi_Alem/insan_ve_ene_aynasi.md"
+    },
+    {
+      "id": 11,
+      "makam": "Birinci Makam",
+      "mertebe_no": 11,
+      "baslik": "Enbiyalar ve Resuller",
+      "kategori": "Şuurlu Şahitler",
+      "temel_delil": "Yüz binlerce peygamberin tevhitte ittifakı, teyit edici mucizeler ve yüksek ahlak.",
+      "ayet_referansi": "Nisâ Sûresi, 163-165; Şûrâ Sûresi, 13",
+      "modern_bilim": "Tarih Metodolojisi, Tevatür Epistemolojisi, Sosyoloji",
+      "esma": ["Hâdî", "Reşîd", "Sâdık", "Mürsel"],
+      "dosya": "03_Suurlu_ve_Gaybi_Alem/enbiya_ve_mucizeler.md"
+    },
+    {
+      "id": 12,
+      "makam": "Birinci Makam",
+      "mertebe_no": 12,
+      "baslik": "Asfiya ve Müdakkik Âlimler",
+      "kategori": "Şuurlu Şahitler",
+      "temel_delil": "Farklı asırlarda binlerce dâhi ve tahkik ehli âlimin aklî burhanlarla tevhidi ispatı.",
+      "ayet_referansi": "Fâtır Sûresi, 28; Âl-i İmrân Sûresi, 18",
+      "modern_bilim": "Klasik Mantık, Kelâm Epistemolojisi, Felsefe Tarihi",
+      "esma": ["Hakîm", "Alîm", "Nûr", "Mübîn"],
+      "dosya": "03_Suurlu_ve_Gaybi_Alem/asfiya_ve_muhakkikler.md"
+    },
+    {
+      "id": 13,
+      "makam": "Birinci Makam",
+      "mertebe_no": 13,
+      "baslik": "Evliya ve Ârifler",
+      "kategori": "Şuurlu Şahitler",
+      "temel_delil": "Kalb gözü açık milyonlarca ehl-i keşif ve şuhudun gayb perdesi arkasını müşahedesi.",
+      "ayet_referansi": "Yûnus Sûresi, 62-64; Kaf Sûresi, 37",
+      "modern_bilim": "Mistisizm Psikolojisi, Sezgisel Epistemoloji, İrfan Felsefesi",
+      "esma": ["Velî", "Vedûd", "Kuddûs", "Basîr"],
+      "dosya": "03_Suurlu_ve_Gaybi_Alem/evliya_ve_arPath_ehli.md"
+    },
+    {
+      "id": 14,
+      "makam": "Birinci Makam",
+      "mertebe_no": 14,
+      "baslik": "Melaike ve Ruhaniyat Âlemi",
+      "kategori": "Gayb ve Melekût Âlemi",
+      "temel_delil": "Madde âleminin ruhsuz olamayacağı, kâinattaki fıtrî kanunların şuurlu nezaretçileri.",
+      "ayet_referansi": "Tahrîm Sûresi, 6; Fâtır Sûresi, 1",
+      "modern_bilim": "Metafizik, Bilinç ve Madde Münasebeti",
+      "esma": ["Kuddûs", "Sübbûh", "Mukaddes", "Müheymin"],
+      "dosya": "03_Suurlu_ve_Gaybi_Alem/melaike_ve_ruhaniyat.md"
+    },
+    {
+      "id": 15,
+      "makam": "Birinci Makam",
+      "mertebe_no": 15,
+      "baslik": "Akl-ı Selim ve Fıtrî Vicdan",
+      "kategori": "Gayb ve Melekût Âlemi",
+      "temel_delil": "İnsan vicdanındaki nokta-i istinad ve nokta-i istimdad; fıtratın yalan söylememesi.",
+      "ayet_referansi": "Rûm Sûresi, 30; Şems Sûresi, 7-8",
+      "modern_bilim": "Ahlak Felsefesi, Bilişsel Psikoloji, Fıtrat Teorisi",
+      "esma": ["Hakk", "Adl", "Fâtır", "Habîr"],
+      "dosya": "03_Suurlu_ve_Gaybi_Alem/akil_kalp_ve_vicdan.md"
+    },
+    {
+      "id": 16,
+      "makam": "Birinci Makam",
+      "mertebe_no": 16,
+      "baslik": "Vahiy ve Sadık İlhamlar",
+      "kategori": "Gayb ve Melekût Âlemi",
+      "temel_delil": "Gayb âleminin şuaları; hayvanatın ilhamından peygamberlerin vahiy tebliğine uzanan irtibat.",
+      "ayet_referansi": "Şûrâ Sûresi, 51; Nahl Sûresi, 68",
+      "modern_bilim": "Vahiy Fenomenolojisi, Dini Tecrübe Felsefesi",
+      "esma": ["Mütekellim", "Semî'", "Latîf", "Habîr"],
+      "dosya": "03_Suurlu_ve_Gaybi_Alem/vahiy_ve_sadik_ilhamlar.md"
+    },
+    {
+      "id": 17,
+      "makam": "Birinci Makam",
+      "mertebe_no": 17,
+      "baslik": "Risalet-i Ahmediye (Aleyhissalâtü Vesselâm)",
+      "kategori": "Risalet ve Vahiy Zirvesi",
+      "temel_delil": "Hz. Muhammed'in (asm) zâtı, davası, bin mucizesi, sarsılmaz imanı ve getirdiği nizam.",
+      "ayet_referansi": "Fetih Sûresi, 28-29; Ahzâb Sûresi, 45-46",
+      "modern_bilim": "Tarihî Şahsiyet Analizi, Peygamberlik Sosyolojisi",
+      "esma": ["Habîb", "Rauf", "Rahîm", "Mustafa"],
+      "dosya": "04_Risalet_ve_Kuran/risalet-i_ahmediye.md"
+    },
+    {
+      "id": 18,
+      "makam": "Birinci Makam",
+      "mertebe_no": 18,
+      "baslik": "Kur'an-ı Mu'cizü'l-Beyan",
+      "kategori": "Risalet ve Vahiy Zirvesi",
+      "temel_delil": "Kur'an'ın 40 vecihle mucizeliği, kâinat kitabının ezelî tercümesi ve hakikat kaynağı oluşu.",
+      "ayet_referansi": "İsrâ Sûresi, 88; Bakara Sûresi, 23",
+      "modern_bilim": "Linguistik, Edebi İ'caz, Bilimsel İşaretler",
+      "esma": ["Kelâm", "Mübîn", "Hakîm", "Azîz"],
+      "dosya": "04_Risalet_ve_Kuran/kuran-i_mucizul_beyan.md"
+    },
+    {
+      "id": 19,
+      "makam": "Birinci Makam",
+      "mertebe_no": 19,
+      "baslik": "Kâinatın Heyet-i Mecmuası",
+      "kategori": "Risalet ve Vahiy Zirvesi",
+      "temel_delil": "Bütün parçaların birleşerek kâinatın bütününde vurduğu büyük Samediyet mührü.",
+      "ayet_referansi": "İhlâs Sûresi, 1-2; Haşr Sûresi, 24",
+      "modern_bilim": "Bütünsel Kozmoloji, Sistemik Bütünlük, Antropik İlke",
+      "esma": ["Samed", "Vâhid", "Ehad", "Evvel", "Âhir"],
+      "dosya": "04_Risalet_ve_Kuran/kuran-i_mucizul_beyan.md"
+    },
+    {
+      "id": 20,
+      "makam": "İkinci Makam",
+      "mertebe_no": 1,
+      "baslik": "Uluhiyet-i Mutlaka Burhanı",
+      "kategori": "İkinci Makam - Tevhid Hüccetleri",
+      "temel_delil": "Bütün kâinattaki mutlak hâkimiyet ve ibadete lâyık yegâne Zât oluş hakikati.",
+      "ayet_referansi": "Fâtiha Sûresi, 2-5",
+      "modern_bilim": "Ontolojik Mutlakiyet Felsefesi",
+      "esma": ["İlâh", "Mâlikü'l-Mülk"],
+      "dosya": "05_Ikinci_Makam_Tevhid_Huccetleri/vahdet_ve_uluhiyet_burhanlari.md"
+    },
+    {
+      "id": 21,
+      "makam": "İkinci Makam",
+      "mertebe_no": 2,
+      "baslik": "Rububiyet-i Âmme Burhanı",
+      "kategori": "İkinci Makam - Tevhid Hüccetleri",
+      "temel_delil": "Zerrelerden yıldızlara kadar her varlığın terbiye edilip en mükemmel gayeye ulaştırılması.",
+      "ayet_referansi": "A'râf Sûresi, 54",
+      "modern_bilim": "Teleoloji ve Kozmik Tekâmül",
+      "esma": ["Rabb", "Mürebbi"],
+      "dosya": "05_Ikinci_Makam_Tevhid_Huccetleri/vahdet_ve_uluhiyet_burhanlari.md"
+    },
+    {
+      "id": 22,
+      "makam": "İkinci Makam",
+      "mertebe_no": 3,
+      "baslik": "Kayyûmiyet Tecellisi",
+      "kategori": "İkinci Makam - Tevhid Hüccetleri",
+      "temel_delil": "Evrenin her an varlıkta tutulması; bir saniye kesilse her şeyin yokluğa yuvarlanacağı gerçeği.",
+      "ayet_referansi": "Bakara Sûresi, 255 (Âyetü'l-Kürsî)",
+      "modern_bilim": "Kuantum Dalga Fonksiyonu Çökmesi, Sürekli İcad",
+      "esma": ["Kayyûm", "Bâkî"],
+      "dosya": "05_Ikinci_Makam_Tevhid_Huccetleri/ikinci_bab_ve_14_burhan.md"
+    },
+    {
+      "id": 23,
+      "makam": "İkinci Makam",
+      "mertebe_no": 4,
+      "baslik": "Ferdiyet ve Vahdet Burhanı",
+      "kategori": "İkinci Makam - Tevhid Hüccetleri",
+      "temel_delil": "Her bir varlığın şahsına mahsus bir sikke taşıması ve taklit edilemez ferdiyeti.",
+      "ayet_referansi": "İhlâs Sûresi, 1",
+      "modern_bilim": "Kuantum Özdeşsizlik İlkesi, Parmak İzi Benzersizliği",
+      "esma": ["Ferd", "Vitr", "Ehad"],
+      "dosya": "05_Ikinci_Makam_Tevhid_Huccetleri/ikinci_bab_ve_14_burhan.md"
+    },
+    {
+      "id": 24,
+      "makam": "İkinci Makam",
+      "mertebe_no": 5,
+      "baslik": "Kudret-i Mutlaka Burhanı",
+      "kategori": "İkinci Makam - Tevhid Hüccetleri",
+      "temel_delil": "Zâtî kudret karşısında zerre ile güneşin, bahar ile çiçeğin yaratılışının eşit olması.",
+      "ayet_referansi": "Lokmân Sûresi, 28",
+      "modern_bilim": "Sonsuz Kudret ve Enerjinin Korunumu",
+      "esma": ["Kâdir", "Muktedir"],
+      "dosya": "05_Ikinci_Makam_Tevhid_Huccetleri/ikinci_bab_ve_14_burhan.md"
+    },
+    {
+      "id": 25,
+      "makam": "İkinci Makam",
+      "mertebe_no": 6,
+      "baslik": "İlim ve İhata Burhanı",
+      "kategori": "İkinci Makam - Tevhid Hüccetleri",
+      "temel_delil": "Karanlık gecede kara taşın üstündeki kara karıncanın ayak sesini ve kalbini bilen ilim.",
+      "ayet_referansi": "En'âm Sûresi, 59",
+      "modern_bilim": "Kozmik Enformasyon ve Her Yerde Geçerli Fizik Kanunları",
+      "esma": ["Alîm", "Habîr", "Muhsî"],
+      "dosya": "05_Ikinci_Makam_Tevhid_Huccetleri/ikinci_bab_ve_14_burhan.md"
+    },
+    {
+      "id": 26,
+      "makam": "İkinci Makam",
+      "mertebe_no": 7,
+      "baslik": "İrade ve Meşiet Burhanı",
+      "kategori": "İkinci Makam - Tevhid Hüccetleri",
+      "temel_delil": "Sonsuz ihtimaller içinden en faydalı, en güzel ve hikmetli olanın bilerek tercih edilmesi.",
+      "ayet_referansi": "Yâsîn Sûresi, 82",
+      "modern_bilim": "Kuantum Belirsizliği ve Çökme Tercihi",
+      "esma": ["Mürîd", "Fa''âlün limâ yürîd"],
+      "dosya": "05_Ikinci_Makam_Tevhid_Huccetleri/ikinci_bab_ve_14_burhan.md"
+    },
+    {
+      "id": 27,
+      "makam": "İkinci Makam",
+      "mertebe_no": 8,
+      "baslik": "Hikmet ve Gaye Burhanı",
+      "kategori": "İkinci Makam - Tevhid Hüccetleri",
+      "temel_delil": "Evrende tek bir abes, gereksiz veya israf edilmiş unsurun bulunmaması nizamı.",
+      "ayet_referansi": "Mü'minûn Sûresi, 115",
+      "modern_bilim": "Ekolojik Verimlilik, Teleolojik Fizik",
+      "esma": ["Hakîm", "Muğnî"],
+      "dosya": "05_Ikinci_Makam_Tevhid_Huccetleri/ikinci_bab_ve_14_burhan.md"
+    },
+    {
+      "id": 28,
+      "makam": "İkinci Makam",
+      "mertebe_no": 9,
+      "baslik": "Rahmet ve İnayet Burhanı",
+      "kategori": "İkinci Makam - Tevhid Hüccetleri",
+      "temel_delil": "Bütün kâinatı bir şefkat beşiği gibi donatan, muhtaçlara karşılıksız lütufta bulunan rahmet.",
+      "ayet_referansi": "A'râf Sûresi, 156",
+      "modern_bilim": "Evrenin İnsan Hayatına Uygunluğu (Anthropic Fit)",
+      "esma": ["Rahmân", "Rahîm", "Kerîm"],
+      "dosya": "05_Ikinci_Makam_Tevhid_Huccetleri/ikinci_bab_ve_14_burhan.md"
+    },
+    {
+      "id": 29,
+      "makam": "İkinci Makam",
+      "mertebe_no": 10,
+      "baslik": "Adalet ve Mizan Burhanı",
+      "kategori": "İkinci Makam - Tevhid Hüccetleri",
+      "temel_delil": "Kozmostaki atom altı parçacıklardan yıldızlara kadar her şeyin milimetrik tartısı.",
+      "ayet_referansi": "Rahmân Sûresi, 7-9",
+      "modern_bilim": "Kütle-Enerji Korunumu, Hassas Kütle Oranları",
+      "esma": ["Adl", "Muksit", "Hakîm"],
+      "dosya": "05_Ikinci_Makam_Tevhid_Huccetleri/ikinci_bab_ve_14_burhan.md"
+    },
+    {
+      "id": 30,
+      "makam": "İkinci Makam",
+      "mertebe_no": 11,
+      "baslik": "Kudsiyet ve Nezafet Burhanı",
+      "kategori": "İkinci Makam - Tevhid Hüccetleri",
+      "temel_delil": "Milyarlarca canlının ölümüne rağmen yeryüzünün ve göklerin sürekli pırıl pırıl temizlenmesi.",
+      "ayet_referansi": "Bakara Sûresi, 222",
+      "modern_bilim": "Ekolojik Geri Dönüşüm, Ayrıştırıcı Bakteriler, Dolaşım",
+      "esma": ["Kuddûs", "Mütahhir"],
+      "dosya": "05_Ikinci_Makam_Tevhid_Huccetleri/ikinci_bab_ve_14_burhan.md"
+    },
+    {
+      "id": 31,
+      "makam": "İkinci Makam",
+      "mertebe_no": 12,
+      "baslik": "Fettâhiyet ve Suret Verme Burhanı",
+      "kategori": "İkinci Makam - Tevhid Hüccetleri",
+      "temel_delil": "Birbirine benzeyen tohum ve yumurtalardan birbirinden tamamen farklı suretlerin açılması.",
+      "ayet_referansi": "Haşr Sûresi, 24",
+      "modern_bilim": "Morfogenez, Embriyoloji, Genetik İfade",
+      "esma": ["Fettâh", "Musavvir"],
+      "dosya": "05_Ikinci_Makam_Tevhid_Huccetleri/ikinci_bab_ve_14_burhan.md"
+    },
+    {
+      "id": 32,
+      "makam": "İkinci Makam",
+      "mertebe_no": 13,
+      "baslik": "İkram ve Ziyafet Burhanı",
+      "kategori": "İkinci Makam - Tevhid Hüccetleri",
+      "temel_delil": "Kâinatın mükellef bir sofra ve ziyafetgâh olarak her bir canlının zevkine göre serilmesi.",
+      "ayet_referansi": "Nahl Sûresi, 18",
+      "modern_bilim": "Besin Ağları, Duyusal Reseptörler ve Tat Uyumu",
+      "esma": ["Mün'im", "Vehhâb", "Kerîm"],
+      "dosya": "05_Ikinci_Makam_Tevhid_Huccetleri/ikinci_bab_ve_14_burhan.md"
+    },
+    {
+      "id": 33,
+      "makam": "İkinci Makam",
+      "mertebe_no": 14,
+      "baslik": "Tevhid-i Zâtî ve Hatime-i Kübra",
+      "kategori": "İkinci Makam - Tevhid Hüccetleri",
+      "temel_delil": "Bütün delillerin nihayetinde 'Lâ ilâhe illallâh' burhanının şüphe götürmez bedaheti.",
+      "ayet_referansi": "Muhammed Sûresi, 19; İhlâs Sûresi, 1-4",
+      "modern_bilim": "Büyük Birleşik Teori (GUT) Arayışı ve Kozmik Vahdet",
+      "esma": ["Allâh", "Lâ ilâhe illâ Hû", "Evvel", "Âhir", "Zâhir", "Bâtın"],
+      "dosya": "05_Ikinci_Makam_Tevhid_Huccetleri/vahdet_ve_uluhiyet_burhanlari.md"
+    }
+  ]
+}
+  </script>
+
+  <script>
+    const data = JSON.parse(document.getElementById('mertebelerData').textContent);
+    const mertebeler = data.mertebeler;
+    const grid = document.getElementById('mertebeGrid');
+    const searchInput = document.getElementById('searchInput');
+
+    let currentMakam = 'all';
+    let currentCat = 'all';
+
+    function renderGrid() {
+      const q = searchInput.value.trim().toLowerCase();
+      grid.innerHTML = '';
+
+      const filtered = mertebeler.filter(m => {
+        const matchesMakam = (currentMakam === 'all') || (m.makam === currentMakam);
+        const matchesCat = (currentCat === 'all') || (m.kategori === currentCat);
+        const textCorpus = `${m.baslik} ${m.temel_delil} ${m.modern_bilim} ${m.ayet_referansi} ${m.esma.join(' ')}`.toLowerCase();
+        const matchesSearch = !q || textCorpus.includes(q);
+        return matchesMakam && matchesCat && matchesSearch;
+      });
+
+      if (filtered.length === 0) {
+        grid.innerHTML = `
+          <div style="grid-column: 1/-1; text-align:center; padding: 4rem 1rem; color:var(--text-muted);">
+            <p style="font-size:1.25rem; margin-bottom:0.5rem;">🔍 Eşleşen durak bulunamadı.</p>
+            <p style="font-size:0.9rem;">Farklı bir arama terimi deneyebilir veya filtreleri temizleyebilirsiniz.</p>
+          </div>
+        `;
+        return;
+      }
+
+      filtered.forEach(m => {
+        const card = document.createElement('div');
+        card.className = 'card';
+        card.onclick = () => openDetail(m.id);
+
+        card.innerHTML = `
+          <div>
+            <div class="card-top">
+              <span class="card-id">#${String(m.id).padStart(2, '0')}</span>
+              <span class="card-cat">${m.kategori}</span>
+            </div>
+            <h3 class="card-title">${m.baslik}</h3>
+            <p class="card-proof">"${m.temel_delil}"</p>
+          </div>
+          <div class="card-bottom">
+            <div class="badge-row">
+              ${m.esma.map(e => `<span class="esma-tag">Ya ${e}</span>`).join('')}
+            </div>
+            <div class="science-tag">🔬 ${m.modern_bilim}</div>
+          </div>
+        `;
+        grid.appendChild(card);
+      });
+    }
+
+    function openDetail(id) {
+      const m = mertebeler.find(item => item.id === id);
+      if (!m) return;
+
+      const content = `
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.5rem;">
+          <span style="font-family:'Cinzel', serif; font-weight:700; color:var(--gold);">DURAK #${String(m.id).padStart(2, '0')}</span>
+          <span class="card-cat">${m.makam} (Mertebe #${m.mertebe_no})</span>
+        </div>
+        <h2 class="modal-title">${m.baslik}</h2>
+        
+        <div class="modal-meta">
+          <span class="stat-pill" style="padding:0.25rem 0.75rem;">🏷️ ${m.kategori}</span>
+          <span class="stat-pill" style="padding:0.25rem 0.75rem;">📖 ${m.ayet_referansi}</span>
+        </div>
+
+        <div class="modal-section">
+          <h4>💡 Temel Kelâmî Tevhid Delili</h4>
+          <p style="font-size:1.05rem; line-height:1.7;">"${m.temel_delil}"</p>
+        </div>
+
+        <div class="modal-section">
+          <h4>🔬 21. Yüzyıl Modern Bilim İzdüşümü</h4>
+          <p style="color:var(--text-muted);">${m.modern_bilim}</p>
+        </div>
+
+        <div class="modal-section">
+          <h4>✨ Bu Tabakada Tecelli Eden Esmâ-i Hüsnâ</h4>
+          <div class="badge-row" style="margin-top:0.4rem;">
+            ${m.esma.map(e => `<span class="esma-tag" style="font-size:0.85rem; padding:0.25rem 0.7rem;">Ya ${e}</span>`).join('')}
+          </div>
+        </div>
+
+        <div style="margin-top:1.5rem; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem;">
+          <a href="${m.dosya}" style="color:var(--accent); font-weight:600; text-decoration:none; display:inline-flex; align-items:center; gap:0.4rem;">
+            📄 İlgili Araştırma Belgesini İncele &rarr;
+          </a>
+          <button class="btn-action" onclick="closeModal('detailModal')">Kapat</button>
+        </div>
+      `;
+
+      document.getElementById('modalContent').innerHTML = content;
+      openModal('detailModal');
+    }
+
+    function openRandomContemplation() {
+      const r = mertebeler[Math.floor(Math.random() * mertebeler.length)];
+      openDetail(r.id);
+    }
+
+    function openModal(id) {
+      const el = document.getElementById(id);
+      el.classList.add('active');
+    }
+
+    function closeModal(id) {
+      const el = document.getElementById(id);
+      el.classList.remove('active');
+    }
+
+    // Filter Listeners
+    document.querySelectorAll('#makamFilters .filter-btn').forEach(btn => {
+      btn.onclick = () => {
+        document.querySelectorAll('#makamFilters .filter-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        currentMakam = btn.dataset.filter;
+        renderGrid();
+      };
+    });
+
+    document.querySelectorAll('#catFilters .filter-btn').forEach(btn => {
+      btn.onclick = () => {
+        document.querySelectorAll('#catFilters .filter-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        currentCat = btn.dataset.cat;
+        renderGrid();
+      };
+    });
+
+    searchInput.oninput = () => renderGrid();
+
+    // Theme Toggle
+    function toggleTheme() {
+      const isLight = document.body.getAttribute('data-theme') === 'light';
+      if (isLight) {
+        document.body.removeAttribute('data-theme');
+        localStorage.setItem('theme', 'dark');
+      } else {
+        document.body.setAttribute('data-theme', 'light');
+        localStorage.setItem('theme', 'light');
+      }
+    }
+
+    if (localStorage.getItem('theme') === 'light') {
+      document.body.setAttribute('data-theme', 'light');
+    }
+
+    // Quiz Engine
+    let quizQuestions = [];
+    let currentQuizIndex = 0;
+    let quizScore = 0;
+
+    function startQuiz() {
+      currentQuizIndex = 0;
+      quizScore = 0;
+      quizQuestions = [];
+
+      const pool = [...mertebeler].sort(() => 0.5 - Math.random()).slice(0, 5);
+
+      pool.forEach(correct => {
+        const others = mertebeler.filter(m => m.id !== correct.id);
+        const wrong = [...others].sort(() => 0.5 - Math.random()).slice(0, 3);
+        const options = [...wrong, correct].sort(() => 0.5 - Math.random());
+        quizQuestions.push({ correct, options });
+      });
+
+      showQuizQuestion();
+      openModal('quizModal');
+    }
+
+    function showQuizQuestion() {
+      const q = quizQuestions[currentQuizIndex];
+      document.getElementById('quizProgress').textContent = `Soru ${currentQuizIndex + 1} / ${quizQuestions.length} • Puan: ${quizScore}`;
+      document.getElementById('quizQuestion').innerHTML = `
+        Aşağıdaki temel tevhid delili hangi mertebeye aittir?<br>
+        <em style="color:var(--gold); font-size:1.1rem; display:block; margin-top:0.5rem;">"${q.correct.temel_delil}"</em>
+      `;
+
+      const optionsContainer = document.getElementById('quizOptions');
+      optionsContainer.innerHTML = '';
+      document.getElementById('quizFeedback').style.display = 'none';
+      document.getElementById('nextQuizBtn').style.display = 'none';
+
+      q.options.forEach(opt => {
+        const btn = document.createElement('button');
+        btn.className = 'quiz-option';
+        btn.innerHTML = `<strong>${opt.baslik}</strong> <span style="color:var(--text-muted); font-size:0.8rem;">(${opt.kategori})</span>`;
+        btn.onclick = () => answerQuiz(btn, opt, q.correct);
+        optionsContainer.appendChild(btn);
+      });
+    }
+
+    function answerQuiz(selectedBtn, selectedOpt, correctOpt) {
+      const allBtns = document.querySelectorAll('.quiz-option');
+      allBtns.forEach(b => b.disabled = true);
+
+      const feedback = document.getElementById('quizFeedback');
+      feedback.style.display = 'block';
+
+      if (selectedOpt.id === correctOpt.id) {
+        selectedBtn.classList.add('correct');
+        quizScore++;
+        feedback.style.background = 'rgba(16, 185, 129, 0.2)';
+        feedback.style.color = '#10b981';
+        feedback.innerHTML = `🎉 <strong>Tebrikler! Doğru Cevap.</strong><br>İlgili Âyet: ${correctOpt.ayet_referansi}`;
+      } else {
+        selectedBtn.classList.add('wrong');
+        feedback.style.background = 'rgba(239, 68, 68, 0.2)';
+        feedback.style.color = '#ef4444';
+        allBtns.forEach(b => {
+          if (b.textContent.includes(correctOpt.baslik)) b.classList.add('correct');
+        });
+        feedback.innerHTML = `❌ <strong>Yanlış!</strong> Doğru cevap: <strong>${correctOpt.baslik}</strong> olmalıydı.<br>İlgili Âyet: ${correctOpt.ayet_referansi}`;
+      }
+
+      document.getElementById('nextQuizBtn').style.display = 'flex';
+      if (currentQuizIndex === quizQuestions.length - 1) {
+        document.getElementById('nextQuizBtn').textContent = 'Testi Bitir ve Sonucu Gör';
+      } else {
+        document.getElementById('nextQuizBtn').textContent = 'Sonraki Soru →';
+      }
+    }
+
+    function nextQuestion() {
+      currentQuizIndex++;
+      if (currentQuizIndex < quizQuestions.length) {
+        showQuizQuestion();
+      } else {
+        document.getElementById('quizProgress').textContent = 'Test Tamamlandı!';
+        document.getElementById('quizQuestion').innerHTML = `
+          <div style="text-align:center; padding:1.5rem 0;">
+            <div style="font-size:3rem; margin-bottom:0.5rem;">🏆</div>
+            <h3>Testi Tamamladınız!</h3>
+            <p style="font-size:1.25rem; margin-top:0.5rem;">Skorunuz: <strong>${quizScore} / ${quizQuestions.length}</strong></p>
+          </div>
+        `;
+        document.getElementById('quizOptions').innerHTML = '';
+        document.getElementById('quizFeedback').style.display = 'none';
+        document.getElementById('nextQuizBtn').style.display = 'flex';
+        document.getElementById('nextQuizBtn').textContent = 'Yeniden Başlat 🔄';
+        document.getElementById('nextQuizBtn').onclick = () => startQuiz();
+      }
+    }
+
+    // Modal background click close
+    window.onclick = (e) => {
+      if (e.target.classList.contains('modal-overlay')) {
+        e.target.classList.remove('active');
+      }
+    };
+
+    // İlk yükleme
+    renderGrid();
+  </script>
+</body>
+</html>
